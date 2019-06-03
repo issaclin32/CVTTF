@@ -78,7 +78,7 @@ def putText(img: np.ndarray, text: str, org: Tuple[int, int],
         if gray and len(color) == 1:
             pass
         else:
-            raise ValueError()
+            raise ValueError('The length of "color" should be 3(RGB) or 1(grayscale)')
 
 
 
