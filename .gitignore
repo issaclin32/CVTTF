@@ -1,3 +1,4 @@
 .idea
 # ignore files under dist since .whl/.egg files are too large for git
 dist
+cvttf_fonts.zip
