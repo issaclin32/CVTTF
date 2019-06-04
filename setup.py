@@ -1,9 +1,23 @@
 import os
 import setuptools
 from pprint import pprint
+from setuptools.command.develop import develop
+from setuptools.command.install import install
 
 #with open("README.md", "r") as fh:
 #    long_description = fh.read()
+
+class PostDevelopCommand(develop):
+    """Post-installation for development mode."""
+    def run(self):
+        # PUT YOUR POST-INSTALL SCRIPT HERE or CALL A FUNCTION
+        develop.run(self)
+
+class PostInstallCommand(install):
+    """Post-installation for installation mode."""
+    def run(self):
+        # PUT YOUR POST-INSTALL SCRIPT HERE or CALL A FUNCTION
+        install.run(self)
 
 font_dir = 'cvttf/fonts'
 font_files = {}
@@ -37,4 +51,8 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    cmdclass={
+        'develop': PostDevelopCommand,
+        'install': PostInstallCommand,
+    },
 )
