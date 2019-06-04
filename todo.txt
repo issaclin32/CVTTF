@@ -1,0 +1,5 @@
+split CJK Noto Sans into packages:
+cvttf_NotoSansCJK_Black
+cvttf_NotoSansCJK_Bold
+cvttf_NotoSansCJK_DemiLight
+cvttf_NotoSansCJK_Light
