@@ -7,8 +7,9 @@ import PIL.Image  # dependency to PIL(Pillow) will be removed in future releases
 import PIL.ImageFont
 import PIL.ImageDraw
 
-from .char_range import find_supported_range as _find_supported_range
 
+from .char_range import find_supported_range as _find_supported_range
+import notoCJK
 
 class Font:
     def __init__(self, TTF_path: Union[str, List[str]], size: int = 32):
