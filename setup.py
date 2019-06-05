@@ -80,5 +80,4 @@ setuptools.setup(
     cmdclass={
         'install': RedefinedInstallCommand,
     },
-    scripts=['aha.py']
 )
