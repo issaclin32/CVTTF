@@ -16,7 +16,6 @@ cvttf/fonts/NotoSansCJKtc-hinted/NotoSansCJKtc-Light.otf
 cvttf/fonts/NotoSansCJKtc-hinted/NotoSansCJKtc-Medium.otf
 cvttf/fonts/NotoSansCJKtc-hinted/NotoSansCJKtc-Regular.otf
 cvttf/fonts/NotoSansCJKtc-hinted/NotoSansCJKtc-Thin.otf
-cvttf/fonts/NotoSansCJKtc-hinted/NotoSansMonoCJKtc-Bold.otf
 cvttf/fonts/NotoSansCJKtc-hinted/NotoSansMonoCJKtc-Regular.otf
 cvttf/fonts/NotoSansCJKtc-hinted/README
 cvttf/fonts/NotoSansDevanagari-hinted/LICENSE_OFL.txt

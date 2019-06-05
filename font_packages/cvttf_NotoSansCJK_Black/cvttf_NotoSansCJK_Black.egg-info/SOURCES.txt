@@ -1,0 +1,7 @@
+setup.py
+cvttf_NotoSansCJK_Black/NotoSansCJKtc-Black.otf
+cvttf_NotoSansCJK_Black/__init__.py
+cvttf_NotoSansCJK_Black.egg-info/PKG-INFO
+cvttf_NotoSansCJK_Black.egg-info/SOURCES.txt
+cvttf_NotoSansCJK_Black.egg-info/dependency_links.txt
+cvttf_NotoSansCJK_Black.egg-info/top_level.txt
