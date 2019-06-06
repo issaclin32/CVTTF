@@ -9,24 +9,17 @@ import PIL.ImageDraw
 
 
 from .char_range import find_supported_range as _find_supported_range
-from .notoCJK import *
-from . import notoCJK
+from .builtin_fonts import *
+from . import builtin_fonts  # built-in font families
+from .font_class import Font
 
-class Font:
-    def __init__(self, TTF_path: Union[str, List[str]], size: int = 32):
-        if not os.path.isfile(TTF_path):
-            raise FileNotFoundError(f'TTF file: {TTF_path} does not exist.')
-        self._font = PIL.ImageFont.truetype(TTF_path, size)
-        return
+from . import font_class
+from . import builtin_fonts
 
-    @property
-    def font(self) -> PIL.ImageFont.FreeTypeFont:
-        return self._font
+
 
 _CVTTF_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-# built-in font families
-FONT_NOTO_SANS = Font(notoCJK.path_regular)
 
 # built-in colors
 COLOR_RED = (0, 0, 255)

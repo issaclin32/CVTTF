@@ -1,3 +1,10 @@
 numpy
 Pillow
 fontTools
+cvttf-NotoSansCJK-Black
+cvttf-NotoSansCJK-Bold
+cvttf-NotoSansCJK-DemiLight
+cvttf-NotoSansCJK-Light
+cvttf-NotoSansCJK-Medium
+cvttf-NotoSansCJK-Regular
+cvttf-NotoSansCJK-Thin

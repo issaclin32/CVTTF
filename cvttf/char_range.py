@@ -11,8 +11,13 @@ def find_supported_range(font_path: [str]) -> Set[str]:
     ranges = set()
     with TTFont(font_path, 0, ignoreDecompileErrors=True) as ttf:
         for x in ttf['cmap'].tables:
-            for code in x.cmap.values():
-                point = int(code.replace('uni', '\\u').replace('cid', '').lower())
+            for key, code in x.cmap.items():
+                print('key: '+str(key))
+                try:
+                    point = int(code.replace('uni', '\\u').replace('cid', '').lower())
+                except ValueError:
+                    print('ve:'+str(code.replace('uni', '\\u').replace('cid', '').lower()))
+                    continue
                 ch = chr(point)
                 #try:
                 #     print(point, ch)

@@ -7,8 +7,10 @@ import PIL.Image  # dependency to PIL(Pillow) will be removed in future releases
 import PIL.ImageFont
 import PIL.ImageDraw
 
-from .char_range import find_supported_range as _find_supported_range
 
+from .char_range import find_supported_range as _find_supported_range
+from .builtin_fonts import *
+from . import builtin_fonts
 
 class Font:
     def __init__(self, TTF_path: Union[str, List[str]], size: int = 32):
@@ -24,7 +26,7 @@ class Font:
 _CVTTF_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 # built-in font families
-FONT_NOTO_SANS = Font(f'{_CVTTF_ROOT_PATH}\\fonts\\NotoSansCJKtc-hinted\\NotoSansCJKtc-Regular.otf')
+FONT_NOTO_SANS = Font(builtin_fonts.path_regular)
 
 # built-in colors
 COLOR_RED = (0, 0, 255)
