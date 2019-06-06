@@ -9,7 +9,8 @@ import PIL.ImageDraw
 
 
 from .char_range import find_supported_range as _find_supported_range
-import notoCJK
+from .notoCJK import *
+from . import notoCJK
 
 class Font:
     def __init__(self, TTF_path: Union[str, List[str]], size: int = 32):
@@ -25,7 +26,7 @@ class Font:
 _CVTTF_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 # built-in font families
-FONT_NOTO_SANS = Font(f'{_CVTTF_ROOT_PATH}\\fonts\\NotoSansCJKtc-hinted\\NotoSansCJKtc-Regular.otf')
+FONT_NOTO_SANS = Font(notoCJK.path_regular)
 
 # built-in colors
 COLOR_RED = (0, 0, 255)
