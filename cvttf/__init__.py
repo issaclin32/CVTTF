@@ -16,8 +16,6 @@ from .font_class import Font
 from . import font_class
 from . import builtin_fonts
 
-
-
 _CVTTF_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 

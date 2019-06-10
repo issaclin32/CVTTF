@@ -20,14 +20,16 @@ class FontSet:
     """
     A set of font files with different font weight(width)
     example:
-    noto = FontSet({
+    NotoSansCJK = FontSet({
         1: (path of NotoSansCJK_Thin.otf)
         1.5: (path of NotoSansCJK_Light.otf)
         2: (path of NotoSansCJK_Regular.otf)
         ...
     })
     """
-    def __init__(self, font_paths: Dict[Union[int, float], str]):
+    def __init__(self, font_paths: Union[ str, Dict[Union[int, float], str] ]):
+        if type(font_paths) is str:
+            font_paths = {1: font_paths}
         # check if TTF/OTF file exist
         for font_width, path in font_paths.items():
             if not os.path.isfile(path):
@@ -35,6 +37,10 @@ class FontSet:
             if type(font_width) not in [int, float] or font_width <= 0:
                 raise ValueError('font width should be larger than 0.0, datatype: int or float')
         self.font_paths = font_paths
+
+    def __str__(self):
+        return f'FontSet({str(self.font_paths)})'
+
 
 
 # use only 3 sizes for TTF: 12pt, 32pt, 96pt
@@ -46,11 +52,14 @@ class FontFamily:
             if not os.path.isfile(TTF_path):
                 raise FileNotFoundError(f'TTF file: {TTF_path} does not exist.')
             self._font = PIL.ImageFont.truetype(TTF_path, size)
+
         elif type(TTF_path) is list and type(TTF_path[0]) is FontSet:  # "isinstance" cannot be used in generic types
-            for index_fontset, fontset in enumerate(TTF_path):
+            # precedence: TTF_path[0] > TTF_path[1] > ...
+            # key-value pairs from TTF_path[0] will overwrite those from TTF_path[1]
+            for index_fontset, fontset in enumerate(reversed(TTF_path)):
                 supported_range = find_supported_range(list(fontset.font_paths.values())[0])  # if both "regular" and "bold" are provided, check "regular" only
-                print(supported_range)
-                self._supported_range.update( zip(supported_range, [index_fontset]*len(supported_range)) )
+                self._supported_range.update( zip(supported_range, [len(TTF_path)-index_fontset-1]*len(supported_range)) )
+
         else:
             raise TypeError('TTF path can only be "str" or "List[FontSet]"')
         return

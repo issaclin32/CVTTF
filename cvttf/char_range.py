@@ -12,22 +12,5 @@ def find_supported_range(font_path: [str]) -> Set[str]:
     with TTFont(font_path, 0, ignoreDecompileErrors=True) as ttf:
         for x in ttf['cmap'].tables:
             for key, code in x.cmap.items():
-                print('key: '+str(key))
-                try:
-                    point = int(code.replace('uni', '\\u').replace('cid', '').lower())
-                except ValueError:
-                    print('ve:'+str(code.replace('uni', '\\u').replace('cid', '').lower()))
-                    continue
-                ch = chr(point)
-                #try:
-                #     print(point, ch)
-                #except UnicodeEncodeError:  # single surrogates cannot be printed out
-                #     print(point)
-                ranges.add(ch)
+                ranges.add(chr(int(key)))
     return ranges
-
-
-if __name__ == '__main__':
-    ranges = find_supported_range('.\\fonts\\NotoSansCJKtc-Regular.otf')
-
-    print('x' in ranges)

@@ -21,13 +21,12 @@ def test_2():
     from cvttf.builtin_fonts import path_regular
 
     fs0 = FontSet({2: path_regular})
-    fs1 = FontSet({2:'../cvttf/fonts/NotoSansDevanagari-hinted/NotoSansDevanagari-Regular.ttf'})
+    fs1 = FontSet('../cvttf/fonts/NotoSansDevanagari-hinted/NotoSansDevanagari-Regular.ttf')
     ff = FontFamily([fs0, fs1])
 
     for k, v in ff._supported_range.items():
         if v == 1:
-            print(k, v)
-    #print(ff._supported_range)
+            print(k, v, end='  ')
     return
 
 
