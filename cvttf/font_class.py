@@ -47,7 +47,8 @@ class FontSet:
 # resizing image to draw fonts sizes between them
 class FontFamily:
     def __init__(self, TTF_path: Union[str, List[FontSet]], size: int = 32):
-        self._supported_range = {}
+        self._char_range_combined = {}
+        self._char_range_for_each_fontset = []
         if type(TTF_path) is str:
             if not os.path.isfile(TTF_path):
                 raise FileNotFoundError(f'TTF file: {TTF_path} does not exist.')
@@ -58,10 +59,19 @@ class FontFamily:
             # key-value pairs from TTF_path[0] will overwrite those from TTF_path[1]
             for index_fontset, fontset in enumerate(reversed(TTF_path)):
                 supported_range = find_supported_range(list(fontset.font_paths.values())[0])  # if both "regular" and "bold" are provided, check "regular" only
-                self._supported_range.update( zip(supported_range, [len(TTF_path)-index_fontset-1]*len(supported_range)) )
-
+                self._char_range_combined.update( zip(supported_range, [len(TTF_path)-index_fontset-1]*len(supported_range)) )
+                self._char_range_for_each_fontset.append(supported_range)
         else:
             raise TypeError('TTF path can only be "str" or "List[FontSet]"')
+
+        def find_fontset(text: str):
+            """
+            return an integer if the "text" can be displayed using only one charset (e.g. NotoSans Thai)
+            otherwise, return a list of integer which shows what charset should be chosen for each character
+            e.g. ETF基金 -> [0,0,0,4,4]
+            """
+            return
+
         return
 
 

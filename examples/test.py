@@ -24,7 +24,7 @@ def test_2():
     fs1 = FontSet('../cvttf/fonts/NotoSansDevanagari-hinted/NotoSansDevanagari-Regular.ttf')
     ff = FontFamily([fs0, fs1])
 
-    for k, v in ff._supported_range.items():
+    for k, v in ff._char_range_combined.items():
         if v == 1:
             print(k, v, end='  ')
     return
